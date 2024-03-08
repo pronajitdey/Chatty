@@ -5,6 +5,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { app, server } from "./socket/socket.js";
 import authRoutes from "./routes/auth.route.js";
+import userRoutes from "./routes/user.route.js";
+import messageRoutes from "./routes/message.route.js";
 import morgan from "morgan";
 // import path from "path";
 
@@ -33,6 +35,8 @@ app.get("/test", (req, res) => {
 })
 
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/messages", messageRoutes);
 
 server.listen(port, () => {
   console.log(`[server]: Server running on port ${port}`);

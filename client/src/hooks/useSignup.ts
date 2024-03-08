@@ -1,5 +1,5 @@
-import { AuthContext, AuthContextType } from "@/context/AuthContext";
-import { useContext, useState } from "react";
+import { useAuthContext } from "@/context/AuthContext";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import zod from "zod";
 import axios from "axios";
@@ -20,7 +20,7 @@ const userSchema = zod.object({
 const useSignup = () => {
   const [loading, setIsLoading] = useState(false);
 
-  const { setAuthUser } = useContext<AuthContextType | null>(AuthContext)!;
+  const { setAuthUser } = useAuthContext()!;
 
   const signup = async (formData: FormData) => {
     const passwordLength = formData.password.length;

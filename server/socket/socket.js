@@ -1,14 +1,17 @@
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [process.env.DEV_SERVER_URL, process.env.DEV_CLIENT_URL],
-    methods: ["GET", "POST"]
+    origin: [process.env.DEV_CLIENT_URL],
+    methods: ["GET", "POST"],
   }
 });
 
@@ -20,6 +23,8 @@ export const getReceiverSocketId = (receiverId) => {
 
 io.on("connection", (socket) => {
   const userId = socket.handshake.query.userId;
+  console.log("Connected: " + userId);
+  
   if (userId !== undefined) {
     userSocketMap[userId] = socket.id;
   }
