@@ -5,14 +5,16 @@ import { useConversationContext } from "@/context/ConversationContext";
 
 const UserChat = (): React.JSX.Element => {
   const { auth } = useAuthContext()!;
-  const { selectedConversation } = useConversationContext()!;
+  const { selectedConversation, setSelectedConversation } = useConversationContext()!;
+
+  let visibleClass = selectedConversation ? "flex" : "hidden md:flex"
 
   return (
-    <main className="bg-[--blue-primary] w-full h-screen px-8 pb-6 flex flex-col font-0">
+    <main className={`bg-[--blue-primary] w-full h-screen px-8 pb-6 ${visibleClass} flex-col font-0`}>
       {selectedConversation ? (
         <>
           <div className="flex justify-between sticky py-6 top-0">
-            <ChevronLeft className="mt-6"/>
+            <ChevronLeft onClick={() => setSelectedConversation(null)} className="mt-6 cursor-pointer hover:text-[--blue-secondary]"/>
             <div className="flex flex-col items-center gap-1">
               <div>
                 {/* here we will actually show selected chat profile*/}

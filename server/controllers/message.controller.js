@@ -78,7 +78,7 @@ export const getMessages = async (req, res) => {
     });
 
     if (!conversation) {
-      return res.status(403).json({
+      return res.status(200).json({
         messages: [],
       })
     }
