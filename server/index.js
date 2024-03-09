@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({
   credentials: true,
-  origin: process.env.DEV_CLIENT_URL,
+  origin: [process.env.DEV_CLIENT_URL, "https://chatty-zvtl.onrender.com/"]
 }))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser());

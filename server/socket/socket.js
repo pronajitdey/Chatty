@@ -10,7 +10,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [process.env.DEV_CLIENT_URL],
+    origin: [process.env.DEV_CLIENT_URL, "https://chatty-zvtl.onrender.com/"],
     methods: ["GET", "POST"],
   }
 });
