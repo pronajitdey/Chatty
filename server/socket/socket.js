@@ -10,7 +10,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [process.env.DEV_CLIENT_URL, "https://chatty-zvtl.onrender.com/"],
+    origin: [process.env.DEV_CLIENT_URL, "https://chatty-zvtl.onrender.com/", "https://chatty-webapp.netlify.app/"],
     methods: ["GET", "POST"],
   }
 });
